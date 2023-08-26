@@ -6,3 +6,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+actix-web = "4.2.1"
+actix-rt = "2.7.0"
+# Data serialization library
+serde = { version = "1.0.144", features = ["derive"] }
+# Other utilities
+chrono = {version = "0.4.22", features = ["serde"]}

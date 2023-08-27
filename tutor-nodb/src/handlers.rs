@@ -33,3 +33,15 @@ pub async fn new_course(
     app_state.courses.lock().unwrap().push(new_course);
     HttpResponse::Ok().json("Added course")
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use actix_web::http::StatusCode;
+    use std::sync::Mutex;
+
+    #[actix_rt::test]
+    async fn post_course_test() {
+        let course = web::Json(Course {})
+    }
+}

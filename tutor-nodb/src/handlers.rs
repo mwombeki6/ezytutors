@@ -37,7 +37,7 @@ pub async fn new_course(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use actix_web::http::StatusCode;
+    use actix_web::{http::StatusCode, App};
     use std::sync::Mutex;
 
     #[actix_rt::test]
@@ -48,6 +48,11 @@ mod tests {
             course_id: None,
             posted_time: None,
         });
-    
+        let app_state: web::Data<AppState> = web::Data::new(AppState {
+            health_check_response: "".to_string(),
+            visit_count: Mutex::new(0),
+            courses: Mutex::new(vec![]),
+        });
+        
     }
 }

@@ -42,6 +42,12 @@ mod tests {
 
     #[actix_rt::test]
     async fn post_course_test() {
-        let course = web::Json(Course {})
+        let course = web::Json(Course {
+            tutor_id: 1,
+            course_name: "Hello, this is test course".into(),
+            course_id: None,
+            posted_time: None,
+        });
+    
     }
 }

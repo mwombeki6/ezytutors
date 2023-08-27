@@ -37,7 +37,7 @@ pub async fn new_course(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use actix_web::{http::StatusCode, App};
+    use actix_web::{http::StatusCode};
     use std::sync::Mutex;
 
     #[actix_rt::test]

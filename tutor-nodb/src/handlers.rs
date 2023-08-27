@@ -53,6 +53,7 @@ mod tests {
             visit_count: Mutex::new(0),
             courses: Mutex::new(vec![]),
         });
-        
+        let resp = new_course(course, app_state).await;
+        assert_eq!(resp.status(), StatusCode::OK);
     }
 }

@@ -1,5 +1,7 @@
 use super::state::AppState;
 use actix_web::{web, HttpResponse};
+use super::models::Course;
+use chrono::Utc;
 
 pub async fn health_check_handler(app_state: web::Data<AppState>) -> HttpResponse {
     let health_check_response = &app_state.health_check_response;

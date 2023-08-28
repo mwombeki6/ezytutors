@@ -24,4 +24,13 @@ async fn main() -> io::Result<()> {
     .fetch_all(&db_pool)
     .await
     .unwrap();
+    let mut courses_list = vec![];
+    for course_row in course_rows {
+        courses_list.push(Course {
+            course_id: course_row.course_id,
+            tutor_id: course_row.tutor_id,
+            course_name: course_row.course_name,
+            posted_time: Some(chrono::NaiveDateTime::from(course_row.posted_time.unwrap())),
+        })
+    }
 }

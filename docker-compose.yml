@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: ezytutor-db
+    image: postgres
+    environment:
+      POSTGRES_USER: lubex
+      POSTGRES_PASSWORD: lubex6
+      POSTGRES_DB: ezytutors
+    ports:
+      - '5432:5432'
+    volumes:
+      - ezytutor-data:/var/lib/postgresql/data
+
+volumes:
+  ezytutor-data: {}

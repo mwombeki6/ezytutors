@@ -33,4 +33,6 @@ async fn main() -> io::Result<()> {
             posted_time: Some(chrono::NaiveDateTime::from(course_row.posted_time.unwrap())),
         })
     }
+    println!("Courses = {:?}", courses_list);
+    Ok(())
 }

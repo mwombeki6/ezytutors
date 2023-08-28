@@ -1,8 +1,8 @@
+use chrono::NaiveDateTime;
 use dotenv::dotenv;
+use sqlx::postgres::PgPool;
 use std::env;
 use std::io;
-use sqlx::postgres::PgPool;
-use chrono::NaiveDateTime;
 
 #[derive(Debug)]
 pub struct Course {

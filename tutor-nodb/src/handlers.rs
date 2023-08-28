@@ -111,4 +111,16 @@ mod tests {
         let resp = get_courses_for_tutor(app_state, tutor_id).await;
         assert_eq!(resp.status(), StatusCode::OK);
     }
+
+    #[actix_rt::test]
+    async fn get_one_course_success() {
+        let app_state: web::Data<AppState> = web::Data::new(AppState {
+            health_check_response: "".to_string(),
+            visit_count: Mutex::new(0),
+            courses: Mutex::new(vec![]),
+        });
+        let params: web::Path<(i32, i32)> = web::Path::from((1, 1));
+        let resp = get_course_detail(app_state, params).await;
+        assert_eq!(resp.status(), StatusCode::OK);
+    }
 }

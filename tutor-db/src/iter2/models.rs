@@ -9,3 +9,13 @@ pub struct Course {
     pub course_name: String,
     pub posted_time: Option<NaiveDateTime>,
 }
+impl From<web::Json<Course>> for Course {
+    fn from(tweet: web::Json<Course>) -> Self {
+        Course {
+            course_id: tweet.course_id,
+            tutor_id: tweet.tutor_id,
+            course_name: tweet.course_name.clone(),
+            posted_time: tweet.posted_time
+        }
+    }
+}

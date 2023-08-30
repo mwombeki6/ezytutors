@@ -35,7 +35,7 @@ pub async fn post_new_course(
 mod tests {
     use super::*;
     use actix_web::http::StatusCode;
-    use chrono::NaiveDate;
+    use chrono::NaiveDateTime;
     use dotenv::dotenv;
     use sqlx::postgres::PgPool;
     use std::env;
@@ -85,7 +85,7 @@ mod tests {
             course_id: 1,
             tutor_id: 1,
             course_name: "This is the next course".into(),
-            posted_time: Some(NaiveDate::from_ymd_opt(2020, 9, 17).and_hms(14, 01, 11)),
+            posted_time: Some(chrono::NaiveDateTime::),
         };
         let course_param = web::Json(new_course_msg);
         let resp = post_new_course(course_param, app_state).await;

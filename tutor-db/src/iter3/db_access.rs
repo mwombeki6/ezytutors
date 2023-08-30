@@ -31,4 +31,11 @@ pub async fn get_course_details_db(pool: &PgPool, tutor_id: i32, course_id: i32)
     .fetch_one(pool)
     .await
     .unwrap();
+    // Execute query
+    Course {
+        course_id: course_row.course_id,
+        tutor_id: course_row.tutor_id,
+        course_name: course_row.course_name.clone(),
+        posted_time: Some(chrono::NaiveDateTime::from(course_row.posted_time.unwrap())),
+    }
 }

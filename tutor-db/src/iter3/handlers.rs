@@ -98,7 +98,12 @@ mod tests {
             course_id: 3,
             tutor_id: 1,
             course_name: "Third course".into(),
-            posted_time: Some(NaiveDate::from_ymd(2020, 12, 18).and_hms(05, 40, 00)),
+            posted_time: Some(
+                NaiveDate::from_ymd_opt(2020, 12, 18)
+                    .unwrap()
+                    .and_hms_opt(05, 40, 00)
+                    .unwrap(),
+            ),
         };
         let course_param = web::Json(new_course_msg);
         let resp = post_new_course(course_param, app_state).await;

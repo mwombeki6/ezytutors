@@ -12,3 +12,13 @@ pub async fn health_check_handler(app_state: web::Data<AppState>) -> HttpRespons
     *visit_count += 1;
     HttpResponse::Ok().json(&response)
 }
+
+pub async fn get_courses_for_tutor(
+    app_state: web::Data<AppState>,
+    params: web::Path<(i32,)>,
+) -> HttpResponse {
+    let tuple = params.0;
+    let tutor_id: i32 = tuple;
+    let courses = get_courses_for_tutor_db(&app_state.db, tutor_id).await;
+    HttpResponse::Ok().json(courses)
+}

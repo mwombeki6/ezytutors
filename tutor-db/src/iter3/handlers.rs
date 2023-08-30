@@ -34,3 +34,12 @@ pub async fn get_course_details(
     let course = get_course_details_db(&app_state.db, tutor_id, course_id).await;
     HttpResponse::Ok().json(course)
 }
+
+pub async fn post_new_course(
+    new_course: web::Json<Course>,
+    app_state: web::Data<AppState>,
+) -> HttpResponse {
+    let course = post_new_course_db(&app_state.db, new_course.into()).await;
+
+    HttpResponse::Ok().json(course)
+}

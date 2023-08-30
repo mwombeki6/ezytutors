@@ -32,4 +32,21 @@ async fn main() -> io::Result<()> {
         db: db_pool,
     });
     // Construct app and configure routes
+    let app = move || {
+        App::new()
+            .app_data(shared_data.clone())
+            .configure(general_routes)
+            .configure(course_routes)
+    };
+
+    let hostname_port =
+        env::var("SERVER_HOSTNAME_PORT").expect("SERVER_HOSTNAME_PORT is not set in .env file");
+
+    // Start HTTP server
+
+    HttpServer::new(app)
+        .bind(hostname_port)
+        .unwrap()
+        .run()
+        .await
 }

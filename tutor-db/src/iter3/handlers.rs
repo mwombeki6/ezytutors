@@ -25,11 +25,12 @@ pub async fn get_courses_for_tutor(
 pub async fn get_course_details(
     app_state: web::Data<AppState>,
     params: web::Path<(i32, i32)>,
-) -> HttpResponse { /*
+) -> HttpResponse {
+    /*
     let tuple = params;
     let tutor_id: i32 = tuple.0;
     let course_id: i32 = tuple.1; */
-    let (tutor_id, course_id) = (params.0,params.1);
+    let (tutor_id, course_id) = (params.0, params.1);
     let course = get_course_details_db(&app_state.db, tutor_id, course_id).await;
     HttpResponse::Ok().json(course)
 }

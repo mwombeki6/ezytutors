@@ -13,3 +13,21 @@ pub enum EzyTutorError {
 pub struct MyErrorResponse {
     error_message: String,
 }
+impl EzyTutorError {
+    fn error_response(&self) -> String {
+        match self {
+            EzyTutorError::DBError(msg) => {
+                println!("Database error occured: {:?}", msg);
+                "Database error".into()
+            }
+            EzyTutorError::ActixError(msg) => {
+                println!("Server error occured: {:?}", msg);
+                "Internal server error".into()
+            }
+            EzyTutorError::NotFound(msg) => {
+                println!("Not found error occured: {:?}", msg);
+                msg.into()
+            }
+        }
+    }
+}

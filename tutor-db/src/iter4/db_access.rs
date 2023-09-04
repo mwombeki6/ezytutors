@@ -2,7 +2,7 @@ use super::errors::EzyTutorError;
 use super::models::Course;
 use sqlx::postgres::PgPool;
 
-pub async fn get_courses_for_tutor(
+pub async fn get_courses_for_tutor_db(
     pool: &PgPool,
     tutor_id: i32,
 ) -> Result<Vec<Course>, EzyTutorError> {

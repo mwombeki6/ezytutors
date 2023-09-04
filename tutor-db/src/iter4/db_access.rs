@@ -59,3 +59,22 @@ pub async fn get_course_details_db(
         Err(EzyTutorError::NotFound("Course id not found".into()))
     }
 }
+
+pub async fn post_new_course_db(
+    pool: &PgPool,
+    new_course: Course,
+) -> Result<Course, EzyTutorError> {
+    let course_row = sqlx::query!(
+        "insert into ezy_course_c5 (course_id,tutor_id, course_name) values ($1,$2,$3) returning tutor_id, course_id,course_name, posted_time",
+        new_course.course_id, new_course.tutor_id, new_course.course_name
+    )
+    .fetch_one(pool)
+    .await?;
+    // Retrieve result
+    Ok(Course {
+        course_id: course_row.course_id,
+        tutor_id: course_row.tutor_id,
+        course_name: course_row.course_name.clone(),
+        posted_time: course_row.posted_time.unwrap(),
+    })
+}

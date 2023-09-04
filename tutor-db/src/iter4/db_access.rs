@@ -75,6 +75,6 @@ pub async fn post_new_course_db(
         course_id: course_row.course_id,
         tutor_id: course_row.tutor_id,
         course_name: course_row.course_name.clone(),
-        posted_time: course_row.posted_time.unwrap(),
+        posted_time: Some(course_row.posted_time.unwrap()),
     })
 }

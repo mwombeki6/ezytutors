@@ -28,6 +28,6 @@ pub async fn get_courses_for_tutor(
         0 => Err(EzyTutorError::NotFound(
             "Courses not found for tutor".into(),
         )),
-        _ => Ok(courses)
+        _ => Ok(courses),
     }
 }

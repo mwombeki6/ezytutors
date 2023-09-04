@@ -27,7 +27,7 @@ pub async fn get_courses_for_tutor(
 
 pub async fn get_course_details(
     app_state: web::Data<AppState>,
-    path:  web::Path<(i32, i32)>,
+    path: web::Path<(i32, i32)>,
 ) -> Result<HttpResponse, EzyTutorError> {
     let (tutor_id, course_id) = path.into_inner();
     get_course_details_db(&app_state.db, tutor_id, course_id)
@@ -103,7 +103,12 @@ mod tests {
             course_id: 3,
             tutor_id: 1,
             course_name: "Third course".into(),
-            posted_time: Some(NaiveDate::from_ymd(2020, 9, 17).and_hms(14, 01, 11)),
+            posted_time: Some(
+                NaiveDate::from_ymd_opt(2020, 9, 17)
+                    .unwrap()
+                    .and_hms_opt(14, 01, 11)
+                    .unwrap(),
+            ),
         };
         let course_param = web::Json(new_course_msg);
         let resp = post_new_course(course_param, app_state).await.unwrap();

@@ -50,13 +50,6 @@ pub async fn post_new_course(
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use actix_web::http::StatusCode;
-    use chrono::NaiveDate;
-    use dotenv::dotenv;
-    use sqlx::postgres::PgPool;
-    use std::env;
-    use std::sync::Mutex;
 
     #[actix_rt::test]
     async fn get_all_courses_success() {

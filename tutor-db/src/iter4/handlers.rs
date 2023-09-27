@@ -1,3 +1,5 @@
+#![allow(unused_imports)]
+
 use super::db_access::*;
 use super::errors::EzyTutorError;
 use super::models::Course;

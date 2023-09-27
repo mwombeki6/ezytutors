@@ -15,7 +15,7 @@ impl From<web::Json<Course>> for Course {
             course_id: tweet.course_id,
             tutor_id: tweet.tutor_id,
             course_name: tweet.course_name.clone(),
-            posted_time: tweet.posted_time
+            posted_time: tweet.posted_time,
         }
     }
 }

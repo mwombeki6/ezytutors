@@ -1,5 +1,6 @@
 {
     "rust-analyzer.linkedProjects": [
         "./tutor-db/Cargo.toml",
+        "./tutor-db/Cargo.toml"
     ]
 }

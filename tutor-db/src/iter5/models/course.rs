@@ -30,6 +30,18 @@ pub struct CreateCourse {
     pub course_level: Option<String>,
 }
 
+#[derive(Deserialize, Debug, Clone)]
+pub struct UpdateCourse {
+    pub course_name: Option<String>,
+    pub course_description: Option<String>,
+    pub course_format: Option<String>,
+    pub course_structure: Option<String>,
+    pub course_duration: Option<String>,
+    pub course_price: Option<i32>,
+    pub course_language: Option<String>,
+    pub course_level: Option<String>,
+}
+
 impl From<web::Json<CreateCourse>> for CreateCourse {
     fn from(new_course: web::Json<CreateCourse>) -> Self {
         CreateCourse {

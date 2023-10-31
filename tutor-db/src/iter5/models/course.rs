@@ -57,3 +57,18 @@ impl From<web::Json<CreateCourse>> for CreateCourse {
         }
     }
 }
+
+impl From<web::Json<UpdateCourse>> for UpdateCourse {
+    fn from(update_course: web::Json<UpdateCourse>) -> Self {
+        UpdateCourse {
+            course_name: update_course.course_name.clone(),
+            course_description: update_course.course_description.clone(),
+            course_format: update_course.course_format.clone(),
+            course_structure: update_course.course_structure.clone(),
+            course_level: update_course.course_level.clone(),
+            course_duration: update_course.course_duration.clone(),
+            course_language: update_course.course_language.clone(),
+            course_price: update_course.course_price,
+        }
+    }
+}

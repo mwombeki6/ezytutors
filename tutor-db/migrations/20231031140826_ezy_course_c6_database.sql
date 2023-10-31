@@ -27,4 +27,5 @@ create table ezy_course_c6
 );
 
 /* Grant privileges to specific user */
-grant all privileges on table ezy_course_c5 to lubex;
+grant all privileges on table ezy_course_c6 to lubex;
+grant all privileges on all sequences in schema public to lubex;
